@@ -11,6 +11,8 @@ app = Flask(__name__)
 setup_db(app)
 CORS(app)
 
+
+
 '''
 @TODO uncomment the following line to initialize the datbase
 !! NOTE THIS WILL DROP ALL RECORDS AND START YOUR DB FROM SCRATCH
@@ -27,7 +29,15 @@ CORS(app)
     returns status code 200 and json {"success": True, "drinks": drinks} where drinks is the list of drinks
         or appropriate status code indicating reason for failure
 '''
+@app.route('/drinks', methods=['GET'])
+def get_drinks():
 
+    drinks = Drink.query.all()
+
+    return jsonify({
+        'success': True,
+        'drinks': [drink.short() for drink in drinks]
+    }), 200
 
 '''
 @TODO implement endpoint
@@ -37,7 +47,14 @@ CORS(app)
     returns status code 200 and json {"success": True, "drinks": drinks} where drinks is the list of drinks
         or appropriate status code indicating reason for failure
 '''
-
+@app.route('/drinks-detail', methods=['GET'])
+@requires_auth('get:drinks-detail')
+def get_drink_detail(payload):
+    drinks = Drink.query.all()
+    return jsonify({
+        'success': True,
+        'drinks': [drink.long() for drink in drinks]
+    }), 200
 
 '''
 @TODO implement endpoint
@@ -48,6 +65,26 @@ CORS(app)
     returns status code 200 and json {"success": True, "drinks": drink} where drink an array containing only the newly created drink
         or appropriate status code indicating reason for failure
 '''
+@app.route('/drinks', methods=['POST'])
+@requires_auth('post:drinks')
+def create_drink(payload):
+    res = request.get_json()
+    try:
+        res_recipe = res.get('recipe')
+
+        if isinstance(res_recipe, dict):
+            res_recipe = [res_recipe]
+
+        # create object instance of Drink
+        drink = Drink()
+        drink.title = res.get('title')
+        drink.recipe = json.dumps(res_recipe)  # convert object to a string
+        drink.insert()
+
+    except BaseException:
+        abort(400)
+
+    return jsonify({'success': True, 'drinks': [drink.long()]})
 
 
 '''
@@ -61,7 +98,29 @@ CORS(app)
     returns status code 200 and json {"success": True, "drinks": drink} where drink an array containing only the updated drink
         or appropriate status code indicating reason for failure
 '''
+@app.route('/drinks/<int:id>', methods=['PATCH'])
+@requires_auth('patch:drinks')
+def update_drink(payload,id):
+    res = request.get_json()
+    drink = Drink.query.filter(Drink.id == id).one_or_none()
 
+    if drink is None:
+        abort(404)
+
+    try:
+        req_title = res.get('title')
+        req_recipe = res.get('recipe')
+        if req_title:
+            drink.title = req_title
+
+        if req_recipe:
+            drink.recipe = json.dumps(res.get('recipe'))
+
+        drink.update()
+    except BaseException:
+        abort(400)
+
+    return jsonify({'success': True, 'drinks': [drink.long()]}), 200
 
 '''
 @TODO implement endpoint
@@ -73,6 +132,20 @@ CORS(app)
     returns status code 200 and json {"success": True, "delete": id} where id is the id of the deleted record
         or appropriate status code indicating reason for failure
 '''
+@app.route('/drinks/<int:id>', methods=['DELETE'])
+@requires_auth('delete:drinks')
+def delete_drink(payload, id):
+    drink = Drink.query.filter(Drink.id == id).one_or_none()
+
+    if drink is None:
+        abort(404)
+
+    try:
+        drink.delete()
+    except BaseException:
+        abort(400)
+
+    return jsonify({'success': True, 'delete': id}), 200
 
 
 ## Error Handling
@@ -103,8 +176,22 @@ def unprocessable(error):
     error handler should conform to general task above 
 '''
 
-
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({
+        "success": False,
+        "error": 404,
+        "message": "resource not found"
+    }), 404
 '''
 @TODO implement error handler for AuthError
     error handler should conform to general task above 
 '''
+
+@app.errorhandler(AuthError)
+def auth_error(error):
+    return jsonify({
+        "success": False,
+        "error": error.status_code,
+        "message": error.error['description']
+    }), error.status_code
