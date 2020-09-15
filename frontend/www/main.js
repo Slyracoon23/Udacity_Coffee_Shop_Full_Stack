@@ -1297,12 +1297,12 @@ __webpack_require__.r(__webpack_exports__);
  */
 var environment = {
     production: false,
-    apiServerUrl: 'http://127.0.0.1:5000',
+    apiServerUrl: 'https://coffee-udacity.herokuapp.com/',
     auth0: {
         url: 'dev-1b1k1ixz.us',
         audience: 'coffee',
         clientId: '2uQb9MLY0RYc5bYE9Nljdpvk2AC7R9YC',
-        callbackURL: 'http://127.0.0.1:8100',
+        callbackURL: 'https://coffee-udacity.herokuapp.com/',
     }
 };
 

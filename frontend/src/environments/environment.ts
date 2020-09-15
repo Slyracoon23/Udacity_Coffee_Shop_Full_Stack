@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  apiServerUrl: 'http://127.0.0.1:5000', // the running FLASK api server url
+  apiServerUrl: 'https://coffee-udacity.herokuapp.com/', // the running FLASK api server url
   auth0: {
     url: 'dev-1b1k1ixz.us', // the auth0 domain prefix
     audience: 'coffee', // the audience set for the auth0 app
     clientId: '2uQb9MLY0RYc5bYE9Nljdpvk2AC7R9YC', // the client id generated for the auth0 app
-    callbackURL: 'http://127.0.0.1:8100', // the base url of the running ionic application.
+    callbackURL: 'https://coffee-udacity.herokuapp.com/', // the base url of the running ionic application.
   }
 };
