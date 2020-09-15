@@ -1,3 +1,3 @@
-import backend.src
+from backend.src.api import create_app
 
-# runs api.py
+app = create_app()

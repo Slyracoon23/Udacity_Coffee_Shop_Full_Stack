@@ -10,11 +10,13 @@ from .auth.auth import AuthError, requires_auth
 
 def create_app():
     print("running flask app")
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='../../frontend/www', static_url_path='/')
     setup_db(app)
     CORS(app)
 
-
+    @app.route('/')
+    def index():
+        return app.send_static_file('index.html')
 
     '''
     @TODO uncomment the following line to initialize the datbase
