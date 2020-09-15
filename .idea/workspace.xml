@@ -11,6 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3dc51e0-6352-483f-8234-694e6b1f6785" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/database/database.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +33,7 @@
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -71,6 +73,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -88,11 +91,19 @@
       <workItem from="1594680747090" duration="960000" />
       <workItem from="1594753903362" duration="6150000" />
       <workItem from="1595276649535" duration="2950000" />
+      <workItem from="1595511420902" duration="16000" />
+      <workItem from="1596318105135" duration="353000" />
+      <workItem from="1596532831882" duration="1346000" />
+      <workItem from="1596540270946" duration="4000" />
+      <workItem from="1596740799368" duration="47000" />
+      <workItem from="1597862196441" duration="2338000" />
+      <workItem from="1597880824374" duration="10000" />
+      <workItem from="1600178755401" duration="947000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -111,10 +122,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="591" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1594586422317" />
-    <state x="774" y="317" width="424" height="491" key="FileChooserDialogImpl" timestamp="1594230621283">
+    <state x="774" y="317" width="424" height="491" key="FileChooserDialogImpl" timestamp="1597880832983">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="774" y="317" width="424" height="491" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1594230621283" />
+    <state x="774" y="317" width="424" height="491" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1597880832983" />
     <state width="1802" height="275" key="GridCell.Tab.0.bottom" timestamp="1594602239287">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
