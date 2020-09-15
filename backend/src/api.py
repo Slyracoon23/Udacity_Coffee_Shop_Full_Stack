@@ -7,6 +7,7 @@ from flask_cors import CORS
 from .database.models import db_drop_and_create_all, setup_db, Drink
 from .auth.auth import AuthError, requires_auth
 
+print("running flask app")
 app = Flask(__name__)
 setup_db(app)
 CORS(app)
@@ -195,3 +196,4 @@ def auth_error(error):
         "error": error.status_code,
         "message": error.error['description']
     }), error.status_code
+
