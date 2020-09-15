@@ -1072,7 +1072,7 @@ var AuthService = /** @class */ (function () {
         link += 'audience=' + this.audience + '&';
         link += 'response_type=token&';
         link += 'client_id=' + this.clientId + '&';
-        link += 'redirect_uri=' + this.callbackURL + '/';
+        link += 'redirect_uri=' + 'https://coffee-udacity.herokuapp.com/';
         return link;
     };
     // invoked in app.component on load
